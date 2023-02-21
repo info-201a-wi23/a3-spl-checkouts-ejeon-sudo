@@ -39,6 +39,7 @@ flyguy_df <- flyguy_df %>%
 obs_flyguy <- ncol(flyguy_df)
 feat_flyguy <- nrow(flyguy_df)
 
+# Find the total checkouts for each book in each year
 each_flyguy_yearly_checkout <- flyguy_df %>%
   group_by(Title, CheckoutYear) %>% 
   summarize(each_total_checkout = sum(Checkouts))
