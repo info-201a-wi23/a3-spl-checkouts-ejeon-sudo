@@ -2,6 +2,14 @@ source("summary.R")
 
 # # Chart One: Compare The Five Most Popular Fly Guys throughout the Years
 
+# Find the top five most popular Fly Guy Books
+most_popular_flyguys <- flyguy_df %>%
+  group_by(Title) %>%
+  summarize(total_checkouts = sum(Checkouts)) %>%
+  arrange(-total_checkouts) %>%
+  slice_head(n = 5) %>%
+  pull(Title)
+
 # Get the five books' in one data frame
 my_popular_books <- flyguy_df %>%
   filter(Title == most_popular_flyguys) %>%

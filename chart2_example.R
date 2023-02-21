@@ -2,6 +2,28 @@ source("summary.R")
 
 # # Chart Two: Compare The 2022 Checkouts for Tedd Arnold's Book Series Fly Guy and Noodlehead
 
+# Get a data frame of Tedd Arnold's Fly Guy and Noodlehead series
+arnolds_books <- author_df %>%
+  filter(CheckoutYear == "2022") %>%
+  filter(str_detect(Title, "(?i)Fly Guy|(?i)Noodlehead")) %>%
+  group_by(Title, CheckoutYear) %>%
+  summarize(total_checkouts = sum(Checkouts)) %>%
+  ungroup()
+
+# Get Fly Guy's most checked out book
+top_flyguy <- arnolds_books %>%
+  filter(str_detect(Title, "(?i)Fly Guy")) %>%
+  filter(total_checkouts == max(total_checkouts)) %>%
+  pull(Title)
+top_flyguy
+
+# Get Noodlehead's most checked out book
+top_noodleheads <- arnolds_books %>%
+  filter(str_detect(Title, "(?i)Noodlehead")) %>%
+  filter(total_checkouts == max(total_checkouts)) %>%
+  pull(Title)
+top_noodleheads
+
 # Create a dataframe that combines the total_checkouts for both Fly Guy and Noodle's most popular book
 top_flyguy_and_noodleheads <- author_df %>%
   filter(CheckoutYear == "2022") %>%
