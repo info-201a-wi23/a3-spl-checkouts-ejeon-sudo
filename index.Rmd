@@ -1,86 +1,59 @@
 ---
-title: "A3: SPL Library Checkouts"
+title: "A3: A Fly Guy Analysis"
+author: "Elisha Jeon"
+date: 'February 20th, 2023'
 output: html_document
 ---
 
 ### Introduction
 
-An introduction of the data and a description of the trends/books/items you are choosing to analyze (and why!)
+The book I chose to analyze is the Fly Guy series by Tedd Arnold. I remember always reaching for it whenever the class visited the school's library; it is a childhood favorite for many. This was around 10 years ago, so I have little sense on which books today's generation of children tend to read today. Has there been an upsurge of new children's book that has overthrown classics like Fly Guy, or has Fly Guy triumphed even through the changing times? Specifically, I hope to look at the rate of checkouts for Fly Guy throughout the years to find when its popularity peaked --- and fell --- to discover what social contexts caused such shifts.
 
 ### Summary Information
 
-Write a summary paragraph of findings that includes the 5 values calculated from your summary information R script
+In this data analysis, I retrieved values that could answer these questions: 
 
-These will likely be calculated using your DPLYR skills, answering questions such as:
+* __Which__ Fly Guy book is the most popular and which is the least?
+* __What__ is the average number of checkouts for each Fly Guy book  
+* __How__ has the number of checkouts for Fly Guy changed since its publication to now?
+* __What__ is the highest and lowest checkout number and in which years?
+* __Is__ the total most checked out Fly Guy book consecutively the most checkout throughout the years?
 
-- What is the average number of checkouts for each item?
-- What is the month or year with the most/least checkouts for a book that you're interested in?
-- What is the month or year with the most/least checkouts for ebooks?
-- How has the number of print book checkouts changed over time?
+I was unsurprised to discover that the Fly Guy book with the most total checkouts is "Fly Guy vs. the flyswatter!" (2784 checkouts) as I remember reaching for this frequently at my school's library. The title and cover itself is enticing and makes people ask: what will Fly Guy do against a fly swatter, where is his owner and friend Buzz throughout all of this, and who is swatting him? As for the least popular book in the series, "Fly guy presents: monster trucks"(36 checkouts), it seems that some of its lack of popularity can be because its checkout history began in 2019 whereas the Flyswatter can be traced back to 2017. However, its late arrival can't entirely be the cause because Flyswatter consecutively reaches at least 300+ checkouts a year (except for 2020 but that's a COVID exception) while Monster Truck received 26 checkouts in 2019, 0 in 2020, 11 in 2021, and is now currently frozen at 0 for both 2022-2023. Maybe somebody lost the book and the library has yet to replace it, it's not possible to tell through only the dataset. 
 
-Feel free to calculate and report values that you find relevant.
+As for the Fly Guy series' success in the recent years as a whole, it's no denying the fall in popularity they have had since 2017. There most popular year was in 2018 with a total of 12,680, and their most popular years fall in the 2017-2019 timeline. Additionally, by subtracting the number of 2017 with 2022 checkouts, I found that there was a difference of 5062, meaning there have been 5062 less checkouts since 2017. Nonetheless, Fly Guy is a treasured childhood memory for me and many others. I hope to see its checkout numbers rise in the future.
 
 ### The Dataset
 
-- Who collected/published the data?  
-- What are the parameters of the data (dates, number of checkouts, kinds of books, etc.)?
-- How was the data collected or generated?  
-- Why was the data collected?  
-- What, if any, ethical questions do you need to consider when working with this data?  
-- What are possible limitations or problems with this data?   (at least 200 words)
+Through their Open Data Program, the Seattle Public Library published their checkouts on physical and electronic items at the library in April 2005. This data is openly available with the goal of increasing transparency and accessibility to the information they collect, and to promote economic development and research. There are twelve observational columns (Usage class, Checkout type, Material Type, Checkout Year, Checkout Month, Checkout count, Title, ISBN, Creator, Subjects, Publisher, and Publication Year) and 42 million rows of checkout counts. This data is contributed by the city of Seattle and their book cravings, and was probably collected to keep track of which books were checked out and available, along with to see which books are popular within the area at the time. 
 
+Ethical questions for the library to collect and publish this data are if the patrons are aware they are being used for research and whether they have the option to opt-out of this data collection. While looking over the dataset, I found that a possible problem could arise when a library adds a book to its collection much later than its publication date. Hence, a complete accurate checkout history of the book could not be possible through the library. A limitation is that people might checkout a book and not get to reading it before it has to be returned. So we cannot connect somebody checking out a book to one more person reading the book.
 
 ### First Trends Over Time Chart
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
-
-The first chart that you will create and include will show the trend over time of your variable/topic/interest. Think carefully about what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- Show more than one, but fewer than ~10 trends
-  - For example, two books, or 5 different mediums
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear - legend title
-In your .Rmd file, make sure to describe why you included the chart, and what patterns emerged
-
-When we say "clear" or "human readable" titles and labels, that means that you should not just display the variable name.
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r, echo = FALSE, warning = FALSE, code = readLines("chart1_example.R")}
+```{r, echo = FALSE, warning = FALSE, message = FALSE, error = TRUE}
+source("chart1_example.R")
+five_flyguys_checkouts
 ```
+
+In this line graph, we can see the checkout trends for the top five most popular Fly Guy books in the series over recent years. We can see that the book that peaked the highest checkouts is “Fly Guy’s Ninja Christmas” in 2018 with 242 checkouts. However, it plummets down to the low 40’s, and the most consistently checked out book was “Flyswatter”. Nonetheless, the common trend that any of these popular books follow is that they drop in 2019 and has stayed relatively low since. 
 
 ### Second Trends Over Time Chart
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
 
-The second chart that you will create and include will show another trend over time of your variable/topic/interest. Think carefully about what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- Show more than one, but fewer than ~10 trends
-  - For example, two books, or 5 different mediums
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear - legend title
-In your .Rmd file, make sure to describe why you included the chart, and what patterns emerged
-
-When we say "clear" or "human readable" titles and labels, that means that you should not just display the variable name.
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r, echo = FALSE, code = readLines("chart2_example.R")}
+```{r, echo = FALSE, warning = FALSE, message = FALSE, error = TRUE}
+source("chart2_example.R")
+flyguy_vs_noodleheads
 ```
 
-### Your Choice
+For this line graph, I wanted to compare two of Tedd Arnold’s books from two different series, "Fly Guy" and the "Noodlesheads", and see which one reigns as his most popular series. I decided to focus on each of the series’ most popular book and their monthly checkouts in the year 2022. This was due to the disadvantage that would form against Noodleheads if combining all the books from each series, since it only has four books in the library while Fly Guy has 39. From the graph, we can see that Fly Guy consecutively reached 23+ checkouts throughout 2022. Noodleheads, on the other hand, was checked out for the first time for the year in April and kept a steady 10+ checkouts until its checkouts completely stopped in November. Evidently, Fly Guy’s popularity is on a whole different level to Noodleheads’.
 
-The last chart is up to you. It could be a line plot, scatter plot, histogram, bar plot, stacked bar plot, and more. Here are some requirements to help guide your design:
+### Bar Chart
 
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear legend title
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r, echo = FALSE, code = readLines("chart2_example.R")}
+```{r, echo = FALSE, warning = FALSE, message = FALSE, error = TRUE}
+source("chart3.R")
+checkout_history
 ```
 
+Finally, this bar chart shows an aggregated total number of checkouts the Fly Guy series received as a whole in each year. By placing the raw numbers of checkouts of each year next to one another, it makes it easy to identify which year Fly Guy was most reached for and also when it wasn’t. Based on the graph, the Fly guy series was most checked out in 2018. Its lowest checkouts was in 2020, most possibly due to COVID restrictions. Perhaps also linked to COVID, the checkout numbers gradually increase around years 2021 and 2022 when mandates were lifted. Although Fly Guy isn’t as popular as it used to be in the late 2010’s, it may make a come back in future years as we see a positive growth.
 
