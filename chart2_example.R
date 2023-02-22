@@ -27,7 +27,7 @@ top_noodleheads
 # Create a dataframe that combines the total_checkouts for both Fly Guy and Noodle's most popular book
 top_flyguy_and_noodleheads <- author_df %>%
   filter(CheckoutYear == "2022") %>%
-  filter(Title == "Fly Guy vs. the flyswatter! / Tedd Arnold." | Title == "Noodleheads lucky day / by Tedd Arnold, Martha Hamilton, and Mitch Weiss ; illustrated by Tedd Arnold.") %>%
+  filter(Title %in% c("Fly Guy vs. the flyswatter! / Tedd Arnold.", "Noodleheads lucky day / by Tedd Arnold, Martha Hamilton, and Mitch Weiss ; illustrated by Tedd Arnold.")) %>%
   group_by(date, Title) %>%
   summarize(total_checkouts = sum(Checkouts))
 
@@ -46,4 +46,4 @@ flyguy_vs_noodleheads <- ggplot(top_flyguy_and_noodleheads) +
        x = "Year", 
        y = "Number of Checkouts",
        color = "Todd Arnold's Two Book Series") +
-  scale_y_continuous(breaks = seq(0, 50, 5), labels = label_number_si())
+  scale_y_continuous(breaks = seq(0, 50, 5))

@@ -18,4 +18,4 @@ checkout_history <- ggplot(total_year_checkouts) +
        y = "Total Checkouts",
        fill = "The Fly Guy Series") +
   scale_x_continuous(breaks = seq(2017, 2023)) +
-  scale_y_continuous(breaks = seq(0, 13000, 2000), labels = label_number_si())
+  scale_y_continuous(breaks = seq(0, 13000, 2000))

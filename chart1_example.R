@@ -28,4 +28,4 @@ five_flyguys_checkouts <- ggplot(my_popular_books) + geom_line(aes(
        x = "Year", 
        y = "Number of Checkouts",
        color = "Top 5 Most Popular Fly Guy Books") +
-  scale_y_continuous(breaks = seq(0, 260, 20), labels = label_number_si())
+  scale_y_continuous(breaks = seq(0, 260, 20))
