@@ -24,7 +24,7 @@ five_flyguys_checkouts <- ggplot(my_popular_books) + geom_line(aes(
   y = total_checkouts, 
   color = Title)) + 
   scale_color_brewer(palette = "Set2") +
-  labs(title = "Fly Guy Series' Collective Doom Entering The 2020's", 
+  labs(title = "Flyswatter Escapes Series' Doom Entering The 2020's", 
        x = "Year", 
        y = "Number of Checkouts",
        color = "Top 5 Most Popular Fly Guy Books") +

@@ -61,6 +61,12 @@ most_popular_flyguy <- flyguy_df %>%
   filter(total_checkouts == max(total_checkouts, na.rm = TRUE)) %>% 
   pull(Title)
 
+most_popular_flyguy_checkouts <- flyguy_df %>%
+  filter(Title == most_popular_flyguy) %>%
+  summarize(total_checkouts = sum(Checkouts)) %>% 
+  filter(total_checkouts == max(total_checkouts, na.rm = TRUE)) %>%
+  pull(total_checkouts)
+
 # Which Fly Guy book was checked out the least of all time?
 least_popular_flyguy <- flyguy_df %>% 
   group_by(Title) %>% 
